@@ -1,1 +1,23 @@
-https://extendsclass.com/api/json-storage/bin/:id
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>urlshortener redirect page</title>
+        <script>
+            const baseStorageUrl = 'https://extendsclass.com/api/json-storage/bin/';
+
+            let url = new URL(location.href);
+            let code = url.searchParams.get("code");
+            console.log('code',code);
+            let r = await fetch(baseStorageUrl+code);
+            let json = await r.json();
+            console.log(json.url);
+
+            location.replace(json.url);
+        </script>
+    </head>
+    <body></body>
+</html>
+
+
