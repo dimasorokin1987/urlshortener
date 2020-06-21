@@ -7,14 +7,15 @@
         <script>
             const baseStorageUrl = 'https://extendsclass.com/api/json-storage/bin/';
 
-            let url = new URL(location.href);
-            let code = url.searchParams.get("code");
-            console.log('code',code);
-            let r = await fetch(baseStorageUrl+code);
-            let json = await r.json();
-            console.log(json.url);
-
-            location.replace(json.url);
+            (async()=>{
+                let url = new URL(location.href);
+                let code = url.searchParams.get("code");
+                console.log('code',code);
+                let r = await fetch(baseStorageUrl+code);
+                let json = await r.json();
+                console.log(json.url);
+                location.replace(json.url);
+            })();
         </script>
     </head>
     <body></body>
