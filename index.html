@@ -3,9 +3,26 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>urlshortener</title>
+        <style>
+            body{
+                text-align: center;
+            }
+            #inputConteiner{
+                width:80%;
+            }
+            #urlInput{
+                width:80%;
+            }
+            #createButton{
+                width:20%;
+            }
+            #resultInput{
+                width: 80%;
+            }
+        </style>
     </head>
     <body>
-        <p>
+        <p id='inputConteiner'>
             <input type='text' id='urlInput' placeholder='http://example.org' />
             <input type='button' id='createButton' value='create' />
         </p>
@@ -17,7 +34,7 @@
             let urlInput = document.querySelector('#urlInput');
             let resultInput = document.querySelector('#resultInput');
 
-            createButton.onclick = ()=>{
+            createButton.onclick = async()=>{
                 let data = {url:urlInput.value};
 
                 let r = await fetch('https://extendsclass.com/api/json-storage/bin', {
