@@ -1,0 +1,38 @@
+<html lang='en'>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>urlshortener</title>
+    </head>
+    <body>
+        <p>
+            <input type='text' id='urlInput' placeholder='http://example.org' />
+            <input type='button' id='createButton' value='create' />
+        </p>
+        <input type='text' id='resultInput' placeholder='http://dimasorokin1987.github.io/urlshortener/open.html?code=ffacddc' />
+        <script>
+            const baseResultUrl = 'http://dimasorokin1987.github.io/urlshortener/open.html?code=';
+
+            let createButton = document.querySelector('#createButton');
+            let urlInput = document.querySelector('#urlInput');
+            let resultInput = document.querySelector('#resultInput');
+
+            createButton.onclick = ()=>{
+                let data = {url:urlInput.value};
+
+                let r = await fetch('https://extendsclass.com/api/json-storage/bin', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+                let json = await r.json();
+                let uri = json.uri;
+                let code = uri.split('/').pop();
+                resultInput.value = baseResultUrl + code;
+            };
+            
+        </script>
+    </body>
+</html>
